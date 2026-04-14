@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>🛒 Shop</h2>
+    <a href="/">🏠 Dashboard</a>
+    <a href="/add">➕ Add Product</a>
+    <a href="/view">📦 Products</a>
+    <a href="/billing">🧾 Billing</a>
+</div>
+
+<div class="main">
+
+    <div class="form-card">
+        <h2>➕ Add New Product</h2>
+
+        <form method="POST">
+
+            <div class="input-group">
+                <label>Product Name</label>
+                <input type="text" name="name" placeholder="Enter product name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Price (₹)</label>
+                <input type="number" name="price" placeholder="Enter price" required>
+            </div>
+
+            <div class="input-group">
+                <label>Quantity</label>
+                <input type="number" name="quantity" placeholder="Enter quantity" required>
+            </div>
+
+            <button class="submit-btn">Add Product</button>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

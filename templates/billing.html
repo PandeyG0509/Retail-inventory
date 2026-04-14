@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>🛒 Shop</h2>
+    <a href="/">🏠 Dashboard</a>
+    <a href="/add">➕ Add Product</a>
+    <a href="/view">📦 Products</a>
+    <a href="/billing">🧾 Billing</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+    <h2 style="color:white;">🧾 Billing System</h2>
+
+    <!-- ADD ITEM FORM -->
+    <div class="form-container">
+        <form method="POST">
+
+            <label style="color:white;">Select Product</label>
+            <select name="product">
+                {% for p in products %}
+                <option value="{{ p[0] }}">
+                    {{ p[1] }} (Stock: {{ p[3] }})
+                </option>
+                {% endfor %}
+            </select>
+
+            <label style="color:white;">Quantity</label>
+            <input type="number" name="quantity" placeholder="Enter Quantity" required>
+
+            <button type="submit">➕ Add Item</button>
+        </form>
+    </div>
+
+    <!-- CART TABLE -->
+    {% if cart %}
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+
+        {% for item in cart %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>₹ {{ item[2] }}</td>
+            <td>₹ {{ item[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- GRAND TOTAL -->
+    <h2 style="text-align:center; color:white; margin-top:20px;">
+        💰 Grand Total: ₹ {{ grand_total }}
+    </h2>
+
+    <!-- CLEAR BUTTON -->
+    <div style="text-align:center; margin-top:20px;">
+        <a href="/clear" class="delete-btn">🗑 Clear Bill</a>
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

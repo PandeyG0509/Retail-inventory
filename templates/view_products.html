@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>🛒 Shop</h2>
+    <a href="/billing">🧾 Billing</a>
+    <a href="/">🏠 Dashboard</a>
+    <a href="/add">➕ Add Product</a>
+    <a href="/view">📦 Products</a>
+</div>
+
+<div class="main">
+    <h2 style="color:white;">Product List</h2>
+
+    <!-- SEARCH BAR -->
+    <form method="POST">
+        <input type="text" name="search" placeholder="Search product...">
+        <button type="submit">Search</button>
+    </form>
+
+    
+    <table>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Action</th>
+</tr>
+
+{% for p in products %}
+<tr>
+    <td>{{ p[0] }}</td>
+    <td>{{ p[1] }}</td>
+    <td>₹ {{ p[2] }}</td>
+    <td>{{ p[3] }}</td>
+    <td>
+        <a href="/edit/{{ p[0] }}" class="edit-btn">Edit</a>
+        <a href="/delete/{{ p[0] }}" class="delete-btn">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+</body>
+</html>

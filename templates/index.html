@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>🛒 Shop</h2>
+    <a href="/billing">🧾 Billing</a>
+    <a href="/">🏠 Dashboard</a>
+    <a href="/add">➕ Add Product</a>
+    <a href="/view">📦 Products</a>
+</div>
+
+<div class="main">
+    <h1 style="color:white;">Dashboard</h1>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Products</h3>
+            <p>{{ total }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Low Stock</h3>
+            <p>{{ low_stock }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Value</h3>
+            <p>₹ {{ total_value }}</p>
+        </div>
+    </div>
+    <div class="image-section">
+    <h2>🛍️ Grocery Items</h2>
+
+    <div class="image-grid">
+        <div class="img-card">
+            <img src="{{ url_for('static', filename='images/download(1).jpg') }}">
+            <p>Rice</p>
+        </div>
+
+        <div class="img-card">
+            <img src="{{ url_for('static', filename='images/download(2).jpg') }}">
+            <p>Fruits</p>
+        </div>
+
+        <div class="img-card">
+            <img src="{{ url_for('static', filename='images/download.jpg') }}">
+            <p>Vegetables</p>
+        </div>
+
+        <div class="img-card">
+            <img src="{{ url_for('static', filename='images/images.jpg') }}">
+            <p>Snacks</p>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
